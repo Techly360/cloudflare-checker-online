@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cloudflare Checker Online - Check if Cloudflare is Enabled</title>
+<meta name="description" content="Free Cloudflare checker online. Enter any domain to check if Cloudflare is enabled: detects Cloudflare nameservers, proxy (CDN) and cf-ray headers in seconds.">
+<meta name="keywords" content="cloudflare checker, check if website uses cloudflare, cloudflare detector, is cloudflare enabled, cloudflare lookup, cloudflare dns checker, cloudflare proxy checker, website cloudflare test, cf-ray checker">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cloudflare Checker Online - Check if Cloudflare is Enabled">
+<meta property="og:description" content="Enter any domain and see if it uses Cloudflare DNS, proxy or CDN. Free, fast, no signup.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cloudflare Checker Online - Check if Cloudflare is Enabled">
+<meta name="twitter:description" content="Free tool to check if a website or domain uses Cloudflare.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Cloudflare Checker Online", "description": "Free online tool to check if a website or domain uses Cloudflare. Detects Cloudflare nameservers, proxy (CDN) and headers.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I check if a website uses Cloudflare?", "acceptedAnswer": {"@type": "Answer", "text": "Enter the domain in the box above and click Check domain. The tool looks at the domain’s nameservers, its IP address and the HTTP headers its server returns, then tells you whether Cloudflare is enabled."}}, {"@type": "Question", "name": "How can I tell if Cloudflare proxy (orange cloud) is enabled?", "acceptedAnswer": {"@type": "Answer", "text": "If the domain resolves to a Cloudflare IP range or the response contains a cf-ray header or server: cloudflare, the site is proxied through Cloudflare. If only the nameservers point to Cloudflare, the record is DNS only (grey cloud)."}}, {"@type": "Question", "name": "What is the difference between Cloudflare DNS and Cloudflare proxy?", "acceptedAnswer": {"@type": "Answer", "text": "Cloudflare DNS means your domain’s DNS records are hosted at Cloudflare. Cloudflare proxy means visitor traffic also passes through Cloudflare’s network, which adds CDN caching and security features."}}, {"@type": "Question", "name": "Is this Cloudflare checker free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The tool is free to use and needs no signup."}}, {"@type": "Question", "name": "Can a site use Cloudflare and still show as not detected?", "acceptedAnswer": {"@type": "Answer", "text": "Rarely. A site can use Cloudflare through a custom setup, such as a partner hosting plan, that hides the usual signals. For nearly all sites the three checks give a reliable answer."}}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2f5;--ink:#14213d;--muted:#5b6b82;--line:#cfd8e3;--card:#fff;--orange:#f38020;--green:#1b7f5c;--red:#b4443a}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1626;--ink:#e8eef7;--muted:#93a3ba;--line:#26354d;--card:#16233a;--orange:#ff9a45;--green:#4fc59a;--red:#f08a80}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 "Bricolage Grotesque",system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:12vh 20px 64px}
+h1{font-size:clamp(2.2rem,7vw,3.6rem);line-height:1.02;font-weight:800;margin:0 0 14px;letter-spacing:-.02em}
+.lede{color:var(--muted);margin:0 0 32px;max-width:52ch}
+form{display:flex;gap:10px;flex-wrap:wrap}
+input{flex:1 1 260px;font:inherit;padding:14px 16px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+input:focus,button:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-color:var(--orange)}
+button{font:600 1rem inherit;font-family:inherit;padding:14px 24px;border:0;border-radius:10px;background:var(--orange);color:#1a0f00;cursor:pointer}
+button:disabled{opacity:.6;cursor:wait}
+#out{margin-top:36px}
+.verdict{font-size:clamp(1.6rem,5vw,2.3rem);font-weight:800;line-height:1.15;margin:0 0 6px}
+.verdict.yes{color:var(--orange)} .verdict.no{color:var(--muted)}
+.sub{color:var(--muted);margin:0 0 24px}
+.row{display:grid;grid-template-columns:28px 1fr;gap:4px 12px;padding:16px 0;border-top:1px solid var(--line)}
+.mark{font-weight:800;font-size:1.2rem;line-height:1.4}
+.mark.ok{color:var(--green)} .mark.bad{color:var(--red)}
+.row h2{font-size:1.05rem;margin:0}
+.row p{grid-column:2;margin:0;color:var(--muted);font-size:.95rem;overflow-wrap:anywhere}
+.err{color:var(--red);font-weight:600}
+@media (prefers-reduced-motion:no-preference){#out>*{animation:in .25s ease-out}@keyframes in{from{opacity:0}to{opacity:1}}}
+h1{font-size:clamp(1.9rem,5.5vw,3rem)}
+.info{margin-top:72px;border-top:1px solid var(--line);padding-top:32px}
+.info h2{font-size:1.4rem;margin:0 0 10px;line-height:1.2}
+.info h3{font-size:1.05rem;margin:22px 0 4px}
+.info p{margin:0 0 12px;color:var(--muted);max-width:62ch}
+details{border-top:1px solid var(--line);padding:14px 0}
+summary{font-weight:600;cursor:pointer}
+details p{margin:8px 0 0}
+footer{margin-top:48px;color:var(--muted);font-size:.9rem}
+</style>
+<script>
+(function(){var u=location.origin+'/';var l=document.createElement('link');l.rel='canonical';l.href=u;document.head.appendChild(l);var o=document.createElement('meta');o.setAttribute('property','og:url');o.content=u;document.head.appendChild(o);})();
+</script>
+</head>
+<body>
+<main>
+  <h1>Cloudflare Checker Online - Check if Cloudflare is enabled</h1>
+  <p class="lede">Enter any website or domain to find out if it uses Cloudflare. We check its nameservers, its IP address, and the headers its server sends back.</p>
+  <form id="f">
+    <input id="d" name="domain" type="text" placeholder="example.com" autocomplete="off" autocapitalize="off" spellcheck="false" required aria-label="Domain name">
+    <button id="b" type="submit">Check domain</button>
+  </form>
+  <section id="out" aria-live="polite"></section>
+
+  <section class="info" aria-labelledby="how">
+    <h2 id="how">How this Cloudflare checker works</h2>
+    <p>This free Cloudflare detector runs three checks on the domain you enter and combines them into one clear answer.</p>
+    <h3>Cloudflare nameservers</h3>
+    <p>If the domain’s nameservers end in ns.cloudflare.com, its DNS is hosted on Cloudflare.</p>
+    <h3>Cloudflare IP range</h3>
+    <p>If the domain resolves to an IP address owned by Cloudflare, the proxy (orange cloud) is turned on and traffic passes through Cloudflare’s CDN.</p>
+    <h3>Cloudflare HTTP headers</h3>
+    <p>Sites behind Cloudflare usually send a cf-ray header and server: cloudflare in their response.</p>
+  </section>
+
+  <section class="info" aria-labelledby="faq">
+    <h2 id="faq">Frequently asked questions</h2>
+    <details><summary>How do I check if a website uses Cloudflare?</summary><p>Enter the domain in the box above and click Check domain. The tool looks at the domain’s nameservers, its IP address and the HTTP headers its server returns, then tells you whether Cloudflare is enabled.</p></details>
+    <details><summary>How can I tell if Cloudflare proxy (orange cloud) is enabled?</summary><p>If the domain resolves to a Cloudflare IP range or the response contains a cf-ray header or server: cloudflare, the site is proxied through Cloudflare. If only the nameservers point to Cloudflare, the record is DNS only (grey cloud).</p></details>
+    <details><summary>What is the difference between Cloudflare DNS and Cloudflare proxy?</summary><p>Cloudflare DNS means your domain’s DNS records are hosted at Cloudflare. Cloudflare proxy means visitor traffic also passes through Cloudflare’s network, which adds CDN caching and security features.</p></details>
+    <details><summary>Is this Cloudflare checker free?</summary><p>Yes. The tool is free to use and needs no signup.</p></details>
+    <details><summary>Can a site use Cloudflare and still show as not detected?</summary><p>Rarely. A site can use Cloudflare through a custom setup, such as a partner hosting plan, that hides the usual signals. For nearly all sites the three checks give a reliable answer.</p></details>
+    </section>
+
+  <footer>Cloudflare Checker is not affiliated with Cloudflare, Inc.</footer>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+
+function row(ok, title, detail) {
+  const r = el('div', 'row');
+  r.append(el('span', 'mark ' + (ok ? 'ok' : 'bad'), ok ? '✓' : '✗'), el('h2', '', title), el('p', '', detail));
+  return r;
+}
+
+function render(d) {
+  const out = $('out'); out.replaceChildren();
+  const { verdict, signals, details: x } = d;
+  const on = verdict !== 'none';
+  out.append(el('p', 'verdict ' + (on ? 'yes' : 'no'),
+    verdict === 'proxied' ? `${d.domain} is behind Cloudflare.` :
+    verdict === 'dns-only' ? `${d.domain} uses Cloudflare DNS only.` :
+    `${d.domain} does not appear to use Cloudflare.`));
+  out.append(el('p', 'sub',
+    verdict === 'proxied' ? 'Traffic passes through Cloudflare’s network.' :
+    verdict === 'dns-only' ? 'DNS is hosted at Cloudflare, but the site’s traffic is not proxied.' :
+    'None of the three checks found Cloudflare.'));
+  out.append(
+    row(signals.nameservers, 'Nameservers',
+      signals.nameservers ? x.cloudflareNameservers.join(', ') : (x.nameservers.join(', ') || 'No nameservers found.')),
+    row(signals.ip, 'IP address',
+      signals.ip ? `In Cloudflare range: ${x.cloudflareIps.join(', ')}` : (x.ips.join(', ') || 'No IP address found.')),
+    row(signals.headers, 'HTTP headers',
+      x.http.error || (!x.http.checked ? 'Skipped.' :
+        `HTTP ${x.http.status}. server: ${x.http.server || 'not sent'}. cf-ray: ${x.http.cfRay || 'not sent'}.`))
+  );
+}
+
+$('f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const b = $('b'), out = $('out');
+  b.disabled = true; b.textContent = 'Checking…'; out.replaceChildren();
+  try {
+    const r = await fetch('/api/check?domain=' + encodeURIComponent($('d').value));
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Something went wrong. Try again.');
+    render(data);
+  } catch (err) {
+    out.append(el('p', 'err', err.message));
+  } finally {
+    b.disabled = false; b.textContent = 'Check domain';
+  }
+});
+</script>
+</body>
+</html>

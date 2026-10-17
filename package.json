@@ -1,0 +1,7 @@
+{
+  "name": "cloudflare-checker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Check whether a domain uses Cloudflare (nameservers, IP ranges, HTTP headers).",
+  "engines": { "node": ">=18" }
+}
